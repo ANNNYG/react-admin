@@ -7,6 +7,7 @@ const { Sider } = Layout
 
 const AppAside = props => {
     let { menuToggle, menu } = props
+    console.log(menu, 'AppAside')
     return (
         <Sider className='aside' collapsed={menuToggle}>
             <div className='logo'>

@@ -1,22 +1,21 @@
-import React, { Component } from 'react'
+import React, { useEffect } from 'react'
+/* 代码拆分插件 */
 import Loadable from 'react-loadable'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 
-class loadingComponent extends Component {
-    constructor(props) {
-        super(props)
+const useLoadingComponent = () => {
+    useEffect(() => {
         NProgress.start()
-    }
-    componentDidMount() {
-        NProgress.done()
-    }
-    render() {
-        return <div />
-    }
+        return () => {
+            NProgress.done()
+        }
+    }, [])
+
+    return <div />
 }
 
-export default (loader, loading = loadingComponent) => {
+export default (loader, loading = useLoadingComponent) => {
     return Loadable({
         loader,
         loading
